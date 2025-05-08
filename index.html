@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Calculate</title>
+    <link href="https://fonts.googleapis.com/css?family=Righteous&display=swap" 
+          rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div class="container">
+        <h1>Student grade calculator</h1>
+        <div class="screen-body-item">
+            <div class="app">
+                <div class="form-group">
+                    <input type="text" 
+                           class="form-control" 
+                           placeholder="TAMIL" 
+                           id="tamil" />
+                </div>
+                <div class="form-group">
+                    <input type="text" 
+                           class="form-control" 
+                           placeholder="CHEMISTRY" 
+                           id="chemistry" />
+                </div>
+                <div class="form-group">
+                    <input type="text" 
+                           class="form-control" 
+                           placeholder="HINDI" id="hindi" />
+                </div>
+                <div class="form-group">
+                    <input type="text" 
+                           class="form-control" 
+                           placeholder="MATHS" id="maths" />
+                </div>
+                <div class="form-group">
+                    <input type="text" 
+                           class="form-control" 
+                           placeholder="PHYSICS" id="phy" />
+                </div>
+                <div>
+                    <input type="button" 
+                           value="show Percentage" 
+                           class="form-button" 
+                           onclick="calculate()" />
+                </div>
+            </div>
+        </div>
+        <div class="form-group showdata">
+            <p id="showdata"></p>
+        </div>
+    </div>
+    <script src="script.js"></script>
+    <script>
+         const calculate = () => {
+
+let tamil = document.querySelector("#tamil").value;
+let chemistry = document.querySelector("#chemistry").value;
+let hindi = document.querySelector("#hindi").value;
+let maths = document.querySelector("#maths").value;
+let phy = document.querySelector("#phy").value;
+let grades = "";
+
+
+let totalgrades =
+    parseFloat(tamil) +
+    parseFloat(chemistry) +
+    parseFloat(hindi) +
+    parseFloat(maths) +
+    parseFloat(phy);
+
+
+let percentage = (totalgrades / 500) * 100;
+if (percentage <= 100 && percentage >= 90) {
+    grades = "A";
+} else if (percentage <= 90 && percentage >= 80) {
+    grades = "B";
+} else if (percentage <= 80 && percentage >= 70) {
+    grades = "B";
+} else if (percentage <= 70 && percentage >= 60) {
+    grades = "B";
+} else if (percentage <= 60 && percentage >= 50) {
+    grades = "C";
+} else {
+    grades = "F";
+}
+
+if (chemistry == "" || hindi == ""
+    || maths == "" || phy == "" || tamil == "") {
+    document.querySelector("#showdata").innerHTML
+        = "Please enter all the fields";
+} else {
+
+if (percentage >= 54.5) {
+    document.querySelector(
+        "#showdata"
+    ).innerHTML =
+         ` Out of 500 your total is  ${totalgrades} 
+    and percentage is ${percentage}%. <br> 
+    Your grade is ${grades}. You are Pass. `;
+} else {
+    document.querySelector(
+        "#showdata"
+    ).innerHTML =
+     ` Out of 500 your total is  ${totalgrades} 
+    and percentage is ${percentage}%. <br> 
+    Your grade is ${grades}. You are Fail. `;
+}
+}
+};
+    </script>
+</body>
+</html>
